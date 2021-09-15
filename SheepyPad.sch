@@ -797,10 +797,8 @@ ENC_A
 Text Label 6700 5950 0    50   ~ 0
 ENC_B
 Wire Wire Line
-	2550 5400 2150 5400
-Wire Wire Line
 	2550 5300 2150 5300
-Text Label 2150 5300 0    50   ~ 0
+Text Label 2150 4800 0    50   ~ 0
 ENC_B
 Wire Wire Line
 	8000 5950 8700 5950
@@ -810,7 +808,7 @@ Wire Wire Line
 	3750 5800 4150 5800
 Text Label 2150 5600 0    50   ~ 0
 ROW_5
-Text Label 2150 5400 0    50   ~ 0
+Text Label 2150 4900 0    50   ~ 0
 ENC_A
 Text Label 8700 5750 0    50   ~ 0
 COL_ENC_1
@@ -833,10 +831,8 @@ Text Notes 7150 5250 0    100  ~ 0
 Rotary Encoder
 Text Label 2100 5500 0    50   ~ 0
 ROW_ENC_1
-Text Label 2100 5200 0    50   ~ 0
+Text Label 2100 5400 0    50   ~ 0
 COL_ENC_1
-Wire Wire Line
-	2550 5200 2100 5200
 Wire Wire Line
 	2100 5500 2550 5500
 $Comp
@@ -880,13 +876,9 @@ Text Label 5800 4700 0    50   ~ 0
 SDA
 Text Label 5800 4600 0    50   ~ 0
 SCL
-Wire Wire Line
-	3750 5200 4400 5200
-Wire Wire Line
-	3750 5300 4400 5300
-Text Label 4400 5300 2    50   ~ 0
+Text Label 2150 5200 0    50   ~ 0
 SDA
-Text Label 4400 5200 2    50   ~ 0
+Text Label 2150 5300 0    50   ~ 0
 SCL
 Text Notes 3400 1050 0    100  ~ 0
 Underglow Led
@@ -1130,4 +1122,12 @@ Text Label 4150 5800 2    50   ~ 0
 COL_3
 Text Label 4150 5900 2    50   ~ 0
 COL_4
+Wire Wire Line
+	2550 4800 2150 4800
+Wire Wire Line
+	2550 4900 2150 4900
+Wire Wire Line
+	2100 5400 2550 5400
+Wire Wire Line
+	2550 5200 2150 5200
 $EndSCHEMATC
