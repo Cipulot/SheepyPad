@@ -1130,4 +1130,148 @@ Wire Wire Line
 	2100 5400 2550 5400
 Wire Wire Line
 	2550 5200 2150 5200
+Wire Wire Line
+	1900 4250 1900 4200
+Wire Wire Line
+	1100 4200 1100 4250
+Wire Wire Line
+	1500 4250 1500 4350
+Wire Wire Line
+	1500 4250 1900 4250
+Wire Wire Line
+	1100 4250 1500 4250
+Connection ~ 1500 4250
+Connection ~ 1100 4250
+Wire Wire Line
+	700  4250 1100 4250
+Wire Wire Line
+	700  4200 700  4250
+Wire Wire Line
+	1500 4200 1500 4250
+$Comp
+L power:GND #PWR0123
+U 1 1 61442949
+P 1500 4350
+F 0 "#PWR0123" H 1500 4100 50  0001 C CNN
+F 1 "GND" H 1505 4177 50  0000 C CNN
+F 2 "" H 1500 4350 50  0001 C CNN
+F 3 "" H 1500 4350 50  0001 C CNN
+	1    1500 4350
+	1    0    0    -1  
+$EndComp
+Connection ~ 1500 3800
+Wire Wire Line
+	1500 3700 1500 3800
+Wire Wire Line
+	700  3900 700  3800
+$Comp
+L power:+5V #PWR0122
+U 1 1 614416E4
+P 1500 3700
+F 0 "#PWR0122" H 1500 3550 50  0001 C CNN
+F 1 "+5V" H 1515 3873 50  0000 C CNN
+F 2 "" H 1500 3700 50  0001 C CNN
+F 3 "" H 1500 3700 50  0001 C CNN
+	1    1500 3700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C1
+U 1 1 61436A1F
+P 700 4050
+F 0 "C1" H 815 4096 50  0000 L CNN
+F 1 "100n" H 815 4005 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" H 738 3900 50  0001 C CNN
+F 3 "~" H 700 4050 50  0001 C CNN
+	1    700  4050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1500 3900 1500 3800
+Wire Wire Line
+	1100 3800 1500 3800
+Wire Wire Line
+	700  3800 1100 3800
+Connection ~ 1100 3800
+Wire Wire Line
+	1100 3900 1100 3800
+Wire Wire Line
+	1500 3800 1900 3800
+Wire Wire Line
+	1900 3800 2300 3800
+Connection ~ 1900 3800
+Wire Wire Line
+	1900 3900 1900 3800
+Wire Wire Line
+	2300 3800 2300 3900
+$Comp
+L Device:C C5
+U 1 1 6143CACA
+P 2300 4050
+F 0 "C5" H 2415 4096 50  0000 L CNN
+F 1 "100n" H 2415 4005 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" H 2338 3900 50  0001 C CNN
+F 3 "~" H 2300 4050 50  0001 C CNN
+	1    2300 4050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C4
+U 1 1 61437EFE
+P 1900 4050
+F 0 "C4" H 2015 4096 50  0000 L CNN
+F 1 "100n" H 2015 4005 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" H 1938 3900 50  0001 C CNN
+F 3 "~" H 1900 4050 50  0001 C CNN
+	1    1900 4050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C3
+U 1 1 61437EF8
+P 1500 4050
+F 0 "C3" H 1615 4096 50  0000 L CNN
+F 1 "100n" H 1615 4005 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" H 1538 3900 50  0001 C CNN
+F 3 "~" H 1500 4050 50  0001 C CNN
+	1    1500 4050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C2
+U 1 1 6143761C
+P 1100 4050
+F 0 "C2" H 1215 4096 50  0000 L CNN
+F 1 "100n" H 1215 4005 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" H 1138 3900 50  0001 C CNN
+F 3 "~" H 1100 4050 50  0001 C CNN
+	1    1100 4050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1900 4250 2300 4250
+Wire Wire Line
+	2300 4250 2300 4200
+Connection ~ 1900 4250
+$Comp
+L Device:C C6
+U 1 1 6143A5E6
+P 2700 4050
+F 0 "C6" H 2815 4096 50  0000 L CNN
+F 1 "100n" H 2815 4005 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" H 2738 3900 50  0001 C CNN
+F 3 "~" H 2700 4050 50  0001 C CNN
+	1    2700 4050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2300 3800 2700 3800
+Wire Wire Line
+	2700 3800 2700 3900
+Connection ~ 2300 3800
+Wire Wire Line
+	2700 4200 2700 4250
+Wire Wire Line
+	2700 4250 2300 4250
+Connection ~ 2300 4250
 $EndSCHEMATC
