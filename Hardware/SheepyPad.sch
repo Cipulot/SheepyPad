@@ -812,8 +812,6 @@ Text Label 2150 4800 0    50   ~ 0
 ENC_A
 Text Label 8700 5750 0    50   ~ 0
 COL_ENC_1
-Wire Wire Line
-	8000 5750 8100 5750
 $Comp
 L Device:D_Small D21
 U 1 1 614F4254
@@ -823,10 +821,8 @@ F 1 "D_Small" H 8155 5680 50  0000 R CNN
 F 2 "Diode_THT:D_DO-35_SOD27_P10.16mm_Horizontal" V 8200 5750 50  0001 C CNN
 F 3 "~" V 8200 5750 50  0001 C CNN
 	1    8200 5750
-	-1   0    0    1   
+	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	8300 5750 8700 5750
 Text Notes 7150 5250 0    100  ~ 0
 Rotary Encoder
 Text Label 2100 5500 0    50   ~ 0
@@ -1274,4 +1270,8 @@ Wire Wire Line
 Wire Wire Line
 	2700 4250 2300 4250
 Connection ~ 2300 4250
+Wire Wire Line
+	8300 5750 8700 5750
+Wire Wire Line
+	8100 5750 8000 5750
 $EndSCHEMATC

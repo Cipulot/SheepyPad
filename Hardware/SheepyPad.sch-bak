@@ -798,7 +798,7 @@ Text Label 6700 5950 0    50   ~ 0
 ENC_B
 Wire Wire Line
 	2550 5300 2150 5300
-Text Label 2150 4800 0    50   ~ 0
+Text Label 2150 4900 0    50   ~ 0
 ENC_B
 Wire Wire Line
 	8000 5950 8700 5950
@@ -808,7 +808,7 @@ Wire Wire Line
 	3750 5800 4150 5800
 Text Label 2150 5600 0    50   ~ 0
 ROW_5
-Text Label 2150 4900 0    50   ~ 0
+Text Label 2150 4800 0    50   ~ 0
 ENC_A
 Text Label 8700 5750 0    50   ~ 0
 COL_ENC_1
