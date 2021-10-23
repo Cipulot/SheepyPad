@@ -17,9 +17,10 @@
 #include QMK_KEYBOARD_H
 
 #include "timer.h"
+#include "calc.h"
 
-enum custom_layers { _MACRO = 0, _CALC, _ADJ };
-enum  custom_keycodes { CALC_0 = SAFE_RANGE, CALC_1, CALC_2, CALC_3, CALC_4, CALC_5, CALC_6, CALC_7, CALC_8, CALC_9, CALC_EQUAL, CALC_DOT, CALC_PLUS, CALC_MINUS, CALC_MULT, CALC_DIV, CALC_AC, CALC_C, CALC_SQRT};
+enum custom_layers {_NUMPAD = 0, _MACRO, _CALC, _ADJ };
+enum  custom_keycodes { CALC_0 = SAFE_RANGE, CALC_1, CALC_2, CALC_3, CALC_4, CALC_5, CALC_6, CALC_7, CALC_8, CALC_9, CALC_EQUAL, CALC_DOT, CALC_PLUS, CALC_MINUS, CALC_MULT, CALC_DIV, CALC_AC, CALC_POSNEG, CALC_SQRT};
 
 #define SPECIAL LT(0, KC_NO)
 
@@ -27,27 +28,29 @@ uint16_t startup_timer;
 bool finished_logo = false;
 bool clear_logo = true;
 
-float term_1 = 0;
-float term_2 = 0;
-float res = 0;
-uint8_t operator = 0;
-bool term_1_ok = false;
-bool calc_finished = false;
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-	[_MACRO] = LAYOUT(
+	[_NUMPAD] = LAYOUT(
 		KC_MPLY,    /* 			LEAVE EMPTY			   */
-		/* L  E */  SPECIAL,	KC_CALC,  KC_MPRV,  KC_MNXT,
-		/* E  M */	KC_E,	KC_F,     KC_G,		KC_H,
-		/* A  P */	KC_I,  	KC_J,     KC_K,		KC_L,
-		/* V  T */	KC_M,	KC_N,     KC_O,		KC_P,
-		/* E  Y */	KC_Q,	KC_R,     KC_S,		KC_T
+		/* L  E */  SPECIAL,	KC_LBRC,  KC_RBRC,  KC_PSLS,
+		/* E  M */	KC_PENT,	S(KC_9),  S(KC_0),	KC_PAST,
+		/* A  P */	KC_P7,      KC_P8,    KC_P9,	KC_PMNS,
+		/* V  T */	KC_P4,	    KC_P5,    KC_P6,	KC_PPLS,
+		/* E  Y */	KC_P1,	    KC_P2,    KC_P3,	KC_P0
+	),
+
+    [_MACRO] = LAYOUT(
+		KC_MPLY,    /* 			LEAVE EMPTY			   */
+		/* L  E */  _______,	_______,  _______,  _______,
+		/* E  M */	_______,	_______,  _______,	_______,
+		/* A  P */	_______,    _______,  _______,	_______,
+		/* V  T */	_______,	_______,  _______,	_______,
+		/* E  Y */	_______,	_______,  _______,	_______
 	),
 
 	[_CALC] = LAYOUT(
 		KC_MPLY,	/* 				LEAVE EMPTY			   		*/
-		/* L  E */	_______,   	CALC_SQRT,  KC_C,        CALC_AC,
+		/* L  E */	_______,   	CALC_SQRT,  CALC_POSNEG, CALC_AC,
 		/* E  M */	CALC_7, 	CALC_8,     CALC_9,      CALC_DIV,
         /* A  P */	CALC_4, 	CALC_5,     CALC_6,      CALC_MULT,
         /* V  T */	CALC_1, 	CALC_2,     CALC_3,      CALC_MINUS,
@@ -56,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	[_ADJ] = LAYOUT(
 		KC_MPLY,	/* 				LEAVE EMPTY			   		*/
-		/* L  E */	_______,     	RGB_TOG,  	RGB_M_G,  	RGB_M_SW,
+		/* L  E */	_______,    RGB_TOG,  	RGB_M_G,  	RGB_M_SW,
         /* E  M */	RGB_HUI,  	RGB_HUD,  	RGB_SAI,  	RGB_SAD,
         /* A  P */	RGB_VAI,  	RGB_VAD,  	RGB_SPI,  	RGB_SPD,
         /* V  T */	xxx,      	xxx,      	xxx,      	xxx,
@@ -67,6 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 void keyboard_post_init_user(void) {
 #ifdef OLED_ENABLE
     oled_clear();
+    clear_calc_vars();
 #endif
 }
 
@@ -80,14 +84,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case SPECIAL:
             if (record->tap.count && record->event.pressed) {
-                if (layer_state_is(_CALC)) {
-                    oled_clear();
-                    layer_off(_CALC);
-                } else {
+                if (layer_state_is(_NUMPAD)) {
+                    layer_off(_NUMPAD);
+                    layer_on(_MACRO);
+                } else if (layer_state_is(_MACRO)) {
+                    layer_off(_MACRO);
+                    clear_calc_vars();
                     oled_clear();
                     layer_on(_CALC);
+                } else if (layer_state_is(_CALC)) {
+                    oled_clear();
+                    layer_off(_CALC);
+                    layer_on(_NUMPAD);
                 }
             } else if (record->event.pressed) {
+                clear_calc_vars();
+                oled_clear();
                 layer_on(_ADJ);
             } else {
                 layer_off(_ADJ);
@@ -95,31 +107,94 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
             break;
 
+        case CALC_0:
+            if (record->event.pressed) {
+                digit_handling(0);
+            }
+            return false;
+            break;
+
+        case CALC_1:
+            if (record->event.pressed) {
+                digit_handling(1);
+            }
+            return false;
+            break;
+
+        case CALC_2:
+            if (record->event.pressed) {
+                digit_handling(2);
+            }
+            return false;
+            break;
+
+        case CALC_3:
+            if (record->event.pressed) {
+                digit_handling(3);
+            }
+            return false;
+            break;
+
+        case CALC_4:
+            if (record->event.pressed) {
+                digit_handling(4);
+            }
+            return false;
+            break;
+
+        case CALC_5:
+            if (record->event.pressed) {
+                digit_handling(5);
+            }
+            return false;
+            break;
+
+        case CALC_6:
+            if (record->event.pressed) {
+                digit_handling(6);
+            }
+            return false;
+            break;
+
+        case CALC_7:
+            if (record->event.pressed) {
+                digit_handling(7);
+            }
+            return false;
+            break;
+
+        case CALC_8:
+            if (record->event.pressed) {
+                digit_handling(8);
+            }
+            return false;
+            break;
+
+        case CALC_9:
+            if (record->event.pressed) {
+                digit_handling(9);
+            }
+            return false;
+            break;
+
         case CALC_SQRT:
             if (record->event.pressed) {
-                if ((term_1_ok) && (!calc_finished) && (operator== 0)) {
-                    if (term_1 <= 0) {
-                    } else {
-                        res = sqrt(term_1);
-                    }
-                    calc_finished = true;
-                } else if (!calc_finished) {
-                    calc_finished = true;
-                }
+                root_op();
             }
             return false;
             break;
 
         case CALC_AC:
             if (record->event.pressed) {
-                term_1  = 0;
-                term_2  = 0;
-                res     = 0;
-                operator= 0;
-                // clear display and reset cursor putting a zero in the first position
-                term_1_ok     = false;
-                calc_finished = false;
+                clear_calc_vars();
                 oled_clear();
+            }
+            return false;
+            break;
+
+        case CALC_POSNEG:
+            if (record->event.pressed) {
+                neg_num_op();
             }
             return false;
             break;
@@ -129,6 +204,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 if (!calc_finished) {
                     operator  = 1;
                     term_1_ok = true;
+                    oled_set_cursor(0, 3);
+                    oled_write_P(PSTR("+\n"), false);
                 }
             }
             return false;
@@ -139,6 +216,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 if (!calc_finished) {
                     operator  = 2;
                     term_1_ok = true;
+                    oled_set_cursor(0, 3);
+                    oled_write_P(PSTR("-\n"), false);
                 }
             }
             return false;
@@ -147,7 +226,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case CALC_MULT:
             if (record->event.pressed) {
                 if (!calc_finished) {
-                    operator= 3;
+                    operator  = 3;
+                    term_1_ok = true;
+                    oled_set_cursor(0, 3);
+                    oled_write_P(PSTR("*\n"), false);
                 }
             }
             return false;
@@ -155,70 +237,35 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case CALC_DIV:
             if (record->event.pressed) {
-                operator= 4;
+                if (!calc_finished) {
+                    operator  = 4;
+                    term_1_ok = true;
+                    oled_set_cursor(0, 3);
+                    oled_write_P(PSTR("/\n"), false);
+                }
             }
             return false;
             break;
 
         case CALC_EQUAL:
             if (record->event.pressed) {
-                if ((term_1_ok) && (!calc_finished) && (operator!= 0)) {
-                    switch (operator) {
-                        case 1:
-                            res = term_1 + term_2;
-                            break;
-                        case 2:
-                            res = term_1 - term_2;
-                            break;
-                        case 3:
-                            res = term_1 * term_2;
-                            break;
-                        case 4:
-                            if ((term_1 == 0) || (term_2 == 0)) {
-                                res = 0;
-                            } else if (term_2 != 0) {
-                                res = term_1 / term_2;
-                            }
-                            break;
-                        default:
-                            break;
-                    }
-                    calc_finished = true;
-                } else if (!calc_finished) {
-                    calc_finished = true;
-                }
+                equal_op();
             }
             return false;
             break;
     }
     return true;
 }
-/*
-layer_state_t layer_state_set_user(layer_state_t state) {
-    uint8_t layer = get_highest_layer(state);
 
-    switch (layer) {
-		case _CALC:
-#ifdef OLED_ENABLE
-			//stuff
-#endif
-			return false;
-			break;
-		default:
-			break;
-	}
-	return state;
-}
-*/
 #ifdef ENCODER_ENABLE
-    bool encoder_update_user(uint8_t index, bool clockwise) {
-        if (clockwise) {
-            tap_code(KC_VOLD);
-        } else {
-            tap_code(KC_VOLU);
-        }
-        return false;
+bool encoder_update_user(uint8_t index, bool clockwise) {
+    if (clockwise) {
+        tap_code(KC_VOLU);
+    } else {
+        tap_code(KC_VOLD);
     }
+    return false;
+}
 #endif
 
 #ifdef OLED_ENABLE
@@ -279,6 +326,12 @@ static void render_status(void) {
     // Host Keyboard Layer Status
 
     switch (get_highest_layer(layer_state)) {
+        case _NUMPAD:
+            oled_write_P(PSTR("Layer: "), false);
+            oled_write_P(PSTR("Numpad\n"), false);
+            render_led();
+            break;
+
         case _MACRO:
             oled_write_P(PSTR("Layer: "), false);
             oled_write_P(PSTR("Macro\n"), false);
@@ -297,12 +350,12 @@ static void render_status(void) {
             break;
         default:
             oled_write_P(PSTR("Layer: "), false);
-            // Or use the write_ln shortcut over adding '\n' to the end of your string
             oled_write_ln_P(PSTR("Undefined"), false);
     }
 }
 
 void oled_task_user(void) {
+    // Change 3000 with the time (in ms) that you want the logo to be displayed
     if ((timer_elapsed(startup_timer) < 3000) && !(finished_logo)) {
         render_logo();
     } else {

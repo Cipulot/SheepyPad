@@ -22,3 +22,5 @@ AUDIO_ENABLE = no           # Audio output on port C6
 
 ENCODER_ENABLE = yes        # Rotary Encoder support
 OLED_ENABLE = yes    # OLED display support
+
+SRC += calc.c
