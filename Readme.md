@@ -40,6 +40,6 @@ Follow the [PCB Assembly Instructions](https://github.com/Cipulot/SheepyPad/blob
 
 ## Project status
 
-Project is currently in development. V1 boards have been produced and tested succesfuly. V2 boards are in the works and will add/change currently available features (both hardware and firmware wise).
+Project is currently in development. V1 boards have been produced and tested successfully. V2 boards are in the works and will add/change currently available features (both hardware and firmware wise).
 
 Software is in constant change and being updated on my qmk_firmware fork available [here](https://github.com/Cipulot/qmk_firmware). You can find a basic default code example (with precompiled binaries) in this repo too if you want to quickly get it up and running.
