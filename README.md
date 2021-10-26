@@ -13,7 +13,21 @@ Main features included:
 - VIA and QMK compatibility
 - 6 addressable RGB LEDs for underglow
 
-This board fully supports QMK and VIA. For QMK refer to the [official docs](https://beta.docs.qmk.fm/). If you wanna use VIA follow the instructions [here](https://github.com/Cipulot/SheepyPad/blob/main/Documents/via.md).
+## Guides
+
+### QMK
+
+This board fully supports QMK, refer to the [official docs](https://beta.docs.qmk.fm/).
+
+### VIA
+
+If you wanna use VIA follow the instructions [here](https://github.com/Cipulot/SheepyPad/blob/main/Documents/via.md).
+
+### Calculator
+
+SheepyPad implements a simple calculator tha tyou can use to perform basic math operations. Follow the [Calculator Guide](https://github.com/Cipulot/SheepyPad/blob/main/Documents/calculator.md) to get started.
+
+### PCB
 
 Follow the [PCB Assembly Instructions](https://github.com/Cipulot/SheepyPad/blob/main/Documents/pcb_assembly.md) to build the PCB and test it out.
 
@@ -21,7 +35,8 @@ Follow the [PCB Assembly Instructions](https://github.com/Cipulot/SheepyPad/blob
 
 - `Docs` contains all documentation and images for the project.
 - `Firmware` contains both the source and precompiled binaries.
-- `Hardware` contains the KiCad design files for the keyboard, fabrication files and STEP file.
+- `Hardware` contains the KiCad design files for the keyboard, fabrication files (in the [Gerbers](https://github.com/Cipulot/SheepyPad/blob/main/Hardware/Gerbers) folder).
+- `Mechanicals` contains STEP file of the PCB and components, plate and case files.
 
 ## Project status
 
