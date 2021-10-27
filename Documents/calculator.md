@@ -34,23 +34,39 @@ When the calculation result is displayed, the calculator will wait for the user 
 
 ### Square Root
 
-The `SQRT` function calculates the square root of the `term_1` operand. Therefore the `term_1` operand must be a positive number, otherwise the calculator will display `Imaginary Root!` as a result.
+The `SQRT` function calculates the square root of the `term_1` operand by itself or the result of an operation between `term_1` and `term_2`. Therefore the `term_1` operand or the result of the operation between `term_1` and `term_2` must be a positive number, otherwise the calculator will display `Imaginary Root!` as a result.
 
 The input flow is as follows:
+
+**`term_1` only**
 
 1. user enters digits for `term_1`
 
 2. user presses `SQRT` to calculate the result
 
+**`term_1` and `term_2`**
+
+1. user enters digits for `term_1`
+
+    1.1 user presses `±` to change `term_1` sing
+
+2. user selects an operation `+` , `-` , `*` or `/`
+
+3. user enters digits for `term_2`
+
+    3.1 user presses `±` to change `term_2` sing
+
+4. user presses `SQRT` to calculate the result, evaluated as `sqrt( term_1|operand|term_2)`
+
 As for the 4 basic operations, when the calculation result is displayed, the calculator will wait for the user to reset the state to the initial state via the `AC` key.
 
 #### **Notes:**
 
-* The `SQRT` function is not supported for `term_2` operands. If you try to execute one of the 4 basic operations and then press `SQRT` this won't produce any output (the `SQRT` command is ignored).
+~~* The `SQRT` function is not supported for `term_2` operands. If you try to execute one of the 4 basic operations and then press `SQRT` this won't produce any output (the `SQRT` command is ignored).~~
 
-* Again if no digits are entered for `term_1` the calculator will treat it as a `0` and return `0` as the result if `SQRT` is pressed.
+~~* Again if no digits are entered for `term_1` the calculator will treat it as a `0` and return `0` as the result if `SQRT` is pressed.~~
 
-    **Implementation of the `SQRT` function as above (`term1` → `operation` → `term__2` → `SQRT`) is in the work.**
+~~**Implementation of the `SQRT` function as above (`term1` → `operation` → `term__2` → `SQRT`) is in the work.**~~
 
 ## Implementation status
 
@@ -67,7 +83,7 @@ This table summarize the implementation status of the calculator.
 |      `/`     |       ✅     |
 |      `±`     |       ✅     |
 |     `AC`     |       ✅     |
-|    `SQRT`    |     ✅/🚧    |
+|    `SQRT`    |       ✅     |
 |     `C`      |       💡      |
 |    `.` aka decimal operands    |     🚧    |
 
