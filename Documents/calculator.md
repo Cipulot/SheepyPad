@@ -66,6 +66,9 @@ This table summarize the implementation status of the calculator.
 |      `*`     |       ✅     |
 |      `/`     |       ✅     |
 |      `±`     |       ✅     |
+|     `AC`     |       ✅     |
 |    `SQRT`    |     ✅/🚧    |
 |     `C`      |       💡      |
 |    `.` aka decimal operands    |     🚧    |
+
+![Calculator](https://github.com/Cipulot/SheepyPad/blob/main/Documents/imgs/calculator.jpg?raw=true)
