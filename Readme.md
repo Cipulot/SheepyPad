@@ -25,7 +25,7 @@ If you wanna use VIA follow the instructions [here](https://github.com/Cipulot/S
 
 ### Calculator
 
-SheepyPad implements a simple calculator tha tyou can use to perform basic math operations. Follow the [Calculator Guide](https://github.com/Cipulot/SheepyPad/blob/main/Documents/calculator.md) to get started.
+SheepyPad implements a simple calculator that you can use to perform basic math operations. Follow the [Calculator Guide](https://github.com/Cipulot/SheepyPad/blob/main/Documents/calculator.md) to get started.
 
 ### PCB
 
