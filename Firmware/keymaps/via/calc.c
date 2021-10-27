@@ -207,6 +207,41 @@ void root_op(void) {
             oled_write_P(PSTR("=     Imaginary Root!\n"), false);
         }
         calc_finished = true;
+    } else if ((term_1_ok) && (!calc_finished) && (operator!= 0)) {
+        switch (operator) {
+            case 1:
+                res = term_1 + term_2;
+                break;
+            case 2:
+                res = term_1 - term_2;
+                break;
+            case 3:
+                res = term_1 * term_2;
+                break;
+            case 4:
+                if ((term_1 == 0) || (term_2 == 0)) {
+                    res = 0;
+                } else if (term_2 != 0) {
+                    res = term_1 / term_2;
+                }
+                break;
+            default:
+                break;
+        }
+        if (res >= 0) {
+            res = sqrt(res);
+            ftoa(res, str_temp, -1);
+            oled_clear();
+            oled_set_cursor(0, 3);
+            oled_write_char('=', false);
+            oled_set_cursor(21 - strlen(str_temp), 3);
+            oled_write(str_temp, false);
+        } else {
+            oled_clear();
+            oled_set_cursor(0, 3);
+            oled_write_P(PSTR("=     Imaginary Root!\n"), false);
+        }
+        calc_finished = true;
     }
 }
 
