@@ -131,7 +131,7 @@ void digit_handling(int digit) {
     if (!calc_finished) {
         if (!term_1_ok) {
             term_1 = concatenate(term_1, digit);
-            // Hereto fix intrinsic bug with ftoa function that I've implemented
+            // Here to fix intrinsic bug with ftoa function that I've implemented
             if (digit != 9)
                 ftoa(term_1, str_temp, 0);
             else
@@ -175,19 +175,11 @@ void equal_op(void) {
         }
         calc_finished = true;
         ftoa(res, str_temp, -1);
-        oled_clear();
-        oled_set_cursor(0, 3);
-        oled_write_char('=', false);
-        oled_set_cursor(21 - strlen(str_temp), 3);
-        oled_write(str_temp, false);
+        print_res(false);
     } else if (!calc_finished) {
         calc_finished = true;
         ftoa(term_1, str_temp, -1);
-        oled_clear();
-        oled_set_cursor(0, 3);
-        oled_write_char('=', false);
-        oled_set_cursor(21 - strlen(str_temp), 3);
-        oled_write(str_temp, false);
+        print_res(false);
     }
 }
 
@@ -196,15 +188,9 @@ void root_op(void) {
         if (term_1 >= 0) {
             res = sqrt(term_1);
             ftoa(res, str_temp, -1);
-            oled_clear();
-            oled_set_cursor(0, 3);
-            oled_write_char('=', false);
-            oled_set_cursor(21 - strlen(str_temp), 3);
-            oled_write(str_temp, false);
+            print_res(false);
         } else {
-            oled_clear();
-            oled_set_cursor(0, 3);
-            oled_write_P(PSTR("=     Imaginary Root!\n"), false);
+            print_res(true);
         }
         calc_finished = true;
     } else if ((term_1_ok) && (!calc_finished) && (operator!= 0)) {
@@ -231,15 +217,9 @@ void root_op(void) {
         if (res >= 0) {
             res = sqrt(res);
             ftoa(res, str_temp, -1);
-            oled_clear();
-            oled_set_cursor(0, 3);
-            oled_write_char('=', false);
-            oled_set_cursor(21 - strlen(str_temp), 3);
-            oled_write(str_temp, false);
+            print_res(false);
         } else {
-            oled_clear();
-            oled_set_cursor(0, 3);
-            oled_write_P(PSTR("=     Imaginary Root!\n"), false);
+            print_res(true);
         }
         calc_finished = true;
     }
@@ -261,5 +241,17 @@ void neg_num_op(void) {
             oled_set_cursor(21 - strlen(str_temp), 3);
             oled_write(str_temp, false);
         }
+    }
+}
+
+void print_res(bool im_root) {
+    oled_clear();
+    oled_set_cursor(0, 3);
+    if (!im_root) {
+        oled_write_char('=', false);
+        oled_set_cursor(21 - strlen(str_temp), 3);
+        oled_write(str_temp, false);
+    } else {
+        oled_write_P(PSTR("=     Imaginary Root!\n"), false);
     }
 }

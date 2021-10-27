@@ -17,3 +17,4 @@ void digit_handling(int digit);
 void equal_op(void);
 void root_op(void);
 void neg_num_op(void);
+void print_res(bool im_root);
