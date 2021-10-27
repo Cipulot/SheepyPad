@@ -14,6 +14,7 @@ float concatenate(float x, int y);
 char *ftoa(double f, char *buf, int precision);
 void clear_calc_vars(void);
 void digit_handling(int digit);
+void op_handling(void);
 void equal_op(void);
 void root_op(void);
 void neg_num_op(void);

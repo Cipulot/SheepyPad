@@ -151,28 +151,32 @@ void digit_handling(int digit) {
     }
 }
 
+void op_handling(void) {
+    switch (operator) {
+        case 1:
+            res = term_1 + term_2;
+            break;
+        case 2:
+            res = term_1 - term_2;
+            break;
+        case 3:
+            res = term_1 * term_2;
+            break;
+        case 4:
+            if ((term_1 == 0) || (term_2 == 0)) {
+                res = 0;
+            } else if (term_2 != 0) {
+                res = term_1 / term_2;
+            }
+            break;
+        default:
+            break;
+    }
+}
+
 void equal_op(void) {
     if ((term_1_ok) && (!calc_finished) && (operator!= 0)) {
-        switch (operator) {
-            case 1:
-                res = term_1 + term_2;
-                break;
-            case 2:
-                res = term_1 - term_2;
-                break;
-            case 3:
-                res = term_1 * term_2;
-                break;
-            case 4:
-                if ((term_1 == 0) || (term_2 == 0)) {
-                    res = 0;
-                } else if (term_2 != 0) {
-                    res = term_1 / term_2;
-                }
-                break;
-            default:
-                break;
-        }
+        op_handling();
         calc_finished = true;
         ftoa(res, str_temp, -1);
         print_res(false);
@@ -194,26 +198,7 @@ void root_op(void) {
         }
         calc_finished = true;
     } else if ((term_1_ok) && (!calc_finished) && (operator!= 0)) {
-        switch (operator) {
-            case 1:
-                res = term_1 + term_2;
-                break;
-            case 2:
-                res = term_1 - term_2;
-                break;
-            case 3:
-                res = term_1 * term_2;
-                break;
-            case 4:
-                if ((term_1 == 0) || (term_2 == 0)) {
-                    res = 0;
-                } else if (term_2 != 0) {
-                    res = term_1 / term_2;
-                }
-                break;
-            default:
-                break;
-        }
+        op_handling();
         if (res >= 0) {
             res = sqrt(res);
             ftoa(res, str_temp, -1);
