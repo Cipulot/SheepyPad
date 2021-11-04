@@ -7,3 +7,6 @@
 [submodule "kicad-lib-arduino"]
 	path = Hardware/kicad-lib-arduino
 	url = https://github.com/g200kg/kicad-lib-arduino.git
+[submodule "cipulot_kicad_parts"]
+	path = cipulot_kicad_parts
+	url = https://github.com/cipulot/cipulot_kicad_parts.git
