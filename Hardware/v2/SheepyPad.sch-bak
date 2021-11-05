@@ -51,7 +51,7 @@ Wire Wire Line
 Wire Wire Line
 	7200 5850 7400 5850
 Text Label 8700 5950 0    50   ~ 0
-ROW_ENC_1
+ROW_1
 $Comp
 L power:GND #PWR0101
 U 1 1 61437620
@@ -727,18 +727,9 @@ Text Label 2150 5700 0    50   ~ 0
 ROW_4
 Text Notes 6450 1000 0    100  ~ 0
 Switch Matrix
-Text Label 5900 6100 0    50   ~ 0
+Text Label 5750 6100 0    50   ~ 0
 RESET
-Wire Wire Line
-	5800 5700 5800 5600
-Wire Wire Line
-	5800 6100 5900 6100
-Connection ~ 5800 6100
-Wire Wire Line
-	5800 6000 5800 6100
-Wire Wire Line
-	5500 6100 5800 6100
-Text Notes 4950 5300 0    100  ~ 0
+Text Notes 4900 5600 0    100  ~ 0
 Reset Switch
 Wire Wire Line
 	4950 6100 5100 6100
@@ -766,28 +757,6 @@ F 3 "~" H 5300 6300 50  0001 C CNN
 	1    5300 6100
 	1    0    0    -1  
 $EndComp
-$Comp
-L Device:R R1
-U 1 1 613FAC92
-P 5800 5850
-F 0 "R1" V 5593 5850 50  0000 C CNN
-F 1 "10K" V 5684 5850 50  0000 C CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 5730 5850 50  0001 C CNN
-F 3 "~" H 5800 5850 50  0001 C CNN
-	1    5800 5850
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+5V #PWR0104
-U 1 1 613FA72E
-P 5800 5600
-F 0 "#PWR0104" H 5800 5450 50  0001 C CNN
-F 1 "+5V" H 5815 5773 50  0000 C CNN
-F 2 "" H 5800 5600 50  0001 C CNN
-F 3 "" H 5800 5600 50  0001 C CNN
-	1    5800 5600
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	7400 5750 6700 5750
 Wire Wire Line
@@ -811,7 +780,7 @@ ROW_5
 Text Label 2150 4800 0    50   ~ 0
 ENC_A
 Text Label 8700 5750 0    50   ~ 0
-COL_ENC_1
+COL_0
 $Comp
 L Device:D_Small D21
 U 1 1 614F4254
@@ -825,10 +794,8 @@ F 3 "~" V 8200 5750 50  0001 C CNN
 $EndComp
 Text Notes 7150 5250 0    100  ~ 0
 Rotary Encoder
-Text Label 2100 5500 0    50   ~ 0
-ROW_ENC_1
 Text Label 2100 5400 0    50   ~ 0
-COL_ENC_1
+COL_0
 Wire Wire Line
 	2100 5500 2550 5500
 $Comp
@@ -1274,4 +1241,6 @@ Wire Wire Line
 	8300 5750 8700 5750
 Wire Wire Line
 	8100 5750 8000 5750
+Wire Wire Line
+	5500 6100 5750 6100
 $EndSCHEMATC

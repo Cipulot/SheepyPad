@@ -51,7 +51,7 @@ Wire Wire Line
 Wire Wire Line
 	7200 5850 7400 5850
 Text Label 8700 5950 0    50   ~ 0
-ROW_1
+ROW_0
 $Comp
 L power:GND #PWR0101
 U 1 1 61437620
@@ -692,23 +692,23 @@ Connection ~ 9000 3550
 Wire Wire Line
 	9000 3550 9000 4200
 Wire Wire Line
-	2550 5900 2150 5900
-Wire Wire Line
-	2550 5800 2150 5800
-Wire Wire Line
 	2550 5700 2150 5700
 Wire Wire Line
 	2550 5600 2150 5600
+Wire Wire Line
+	2550 5500 2150 5500
+Wire Wire Line
+	2550 5800 2150 5800
 Text Label 6450 2000 0    50   ~ 0
-ROW_1
+ROW_0
 Text Label 6450 2650 0    50   ~ 0
-ROW_2
+ROW_1
 Text Label 6450 3300 0    50   ~ 0
-ROW_3
+ROW_2
 Text Label 6450 3950 0    50   ~ 0
-ROW_4
+ROW_3
 Text Label 6450 4600 0    50   ~ 0
-ROW_5
+ROW_4
 Text Label 7350 1200 0    50   ~ 0
 COL_1
 Text Label 7900 1200 0    50   ~ 0
@@ -717,13 +717,13 @@ Text Label 8450 1200 0    50   ~ 0
 COL_3
 Text Label 9000 1200 0    50   ~ 0
 COL_4
-Text Label 4150 5500 2    50   ~ 0
-ROW_1
-Text Label 2150 5900 0    50   ~ 0
-ROW_2
 Text Label 2150 5800 0    50   ~ 0
-ROW_3
+ROW_1
 Text Label 2150 5700 0    50   ~ 0
+ROW_2
+Text Label 2150 5600 0    50   ~ 0
+ROW_3
+Text Label 2150 5500 0    50   ~ 0
 ROW_4
 Text Notes 6450 1000 0    100  ~ 0
 Switch Matrix
@@ -768,16 +768,16 @@ ENC_B
 Wire Wire Line
 	2550 5300 2150 5300
 Text Label 2150 4900 0    50   ~ 0
-ENC_B
+DATA
 Wire Wire Line
 	8000 5950 8700 5950
 Wire Wire Line
-	3750 5900 4150 5900
+	3750 5500 4150 5500
 Wire Wire Line
-	3750 5800 4150 5800
-Text Label 2150 5600 0    50   ~ 0
-ROW_5
-Text Label 2150 4800 0    50   ~ 0
+	3750 5600 4150 5600
+Text Label 2150 5900 0    50   ~ 0
+ROW_0
+Text Label 4150 5300 2    50   ~ 0
 ENC_A
 Text Label 8700 5750 0    50   ~ 0
 COL_0
@@ -794,10 +794,8 @@ F 3 "~" V 8200 5750 50  0001 C CNN
 $EndComp
 Text Notes 7150 5250 0    100  ~ 0
 Rotary Encoder
-Text Label 2100 5400 0    50   ~ 0
+Text Label 4150 5900 2    50   ~ 0
 COL_0
-Wire Wire Line
-	2100 5500 2550 5500
 $Comp
 L SSD1306-128x64_OLED:SSD1306 Brd1
 U 1 1 6156AA53
@@ -927,9 +925,7 @@ Wire Wire Line
 	3050 3100 3600 3100
 Wire Wire Line
 	4200 3100 4750 3100
-Wire Wire Line
-	3750 5400 4400 5400
-Text Label 4400 5400 2    50   ~ 0
+Text Label 2100 5400 0    50   ~ 0
 GLOW_LED
 Wire Wire Line
 	2450 1950 2000 1950
@@ -1072,21 +1068,21 @@ $EndComp
 Text Notes 4750 3950 0    100  ~ 0
 OLED Screen
 Wire Wire Line
-	3750 5500 4150 5500
+	3750 5900 4150 5900
 Wire Wire Line
-	3750 5600 4150 5600
+	3750 5800 4150 5800
 Wire Wire Line
 	3750 5700 4150 5700
-Text Label 4150 5600 2    50   ~ 0
+Text Label 4150 5800 2    50   ~ 0
 COL_1
 Text Label 4150 5700 2    50   ~ 0
 COL_2
-Text Label 4150 5800 2    50   ~ 0
+Text Label 4150 5600 2    50   ~ 0
 COL_3
-Text Label 4150 5900 2    50   ~ 0
+Text Label 4150 5500 2    50   ~ 0
 COL_4
 Wire Wire Line
-	2550 4800 2150 4800
+	3750 5300 4150 5300
 Wire Wire Line
 	2550 4900 2150 4900
 Wire Wire Line
@@ -1243,4 +1239,11 @@ Wire Wire Line
 	8100 5750 8000 5750
 Wire Wire Line
 	5500 6100 5750 6100
+Wire Wire Line
+	2150 5900 2550 5900
+Text Label 4150 5200 2    50   ~ 0
+ENC_B
+Wire Wire Line
+	3750 5200 4150 5200
+NoConn ~ 3750 4800
 $EndSCHEMATC
