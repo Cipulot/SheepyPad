@@ -1,2 +1,3 @@
 (sym_lib_table
+  (lib (name SheepyPad-rescue)(type Legacy)(uri ${KIPRJMOD}/SheepyPad-rescue.lib)(options "")(descr ""))
 )
