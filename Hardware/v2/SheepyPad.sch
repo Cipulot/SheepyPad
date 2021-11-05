@@ -19,7 +19,7 @@ U 1 1 613F5C32
 P 3150 5400
 F 0 "U1" H 3150 6289 60  0000 C CNN
 F 1 "Sparkfun_Pro_Micro" H 3150 6183 60  0000 C CNN
-F 2 "Arduino:Sparkfun_Pro_Micro" H 3150 4750 60  0001 C CNN
+F 2 "Arduino:Sparkfun_Pro_Micro_reversible" H 3150 4750 60  0001 C CNN
 F 3 "https://www.sparkfun.com/products/12640" H 3250 4350 60  0001 C CNN
 	1    3150 5400
 	1    0    0    -1  
