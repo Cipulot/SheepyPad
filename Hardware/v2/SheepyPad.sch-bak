@@ -14,7 +14,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L Arduino:Sparkfun_Pro_Micro U1
+L SheepyPad-rescue:Sparkfun_Pro_Micro-Arduino U1
 U 1 1 613F5C32
 P 3150 5400
 F 0 "U1" H 3150 6289 60  0000 C CNN
@@ -1327,4 +1327,15 @@ F 3 "" H 1500 4350 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	1500 4350 1500 4250
+$Comp
+L power:VCC #PWR0123
+U 1 1 61861826
+P 2750 2800
+F 0 "#PWR0123" H 2750 2650 50  0001 C CNN
+F 1 "VCC" H 2765 2973 50  0000 C CNN
+F 2 "" H 2750 2800 50  0001 C CNN
+F 3 "" H 2750 2800 50  0001 C CNN
+	1    2750 2800
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

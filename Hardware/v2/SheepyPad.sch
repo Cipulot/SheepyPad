@@ -756,7 +756,7 @@ Wire Wire Line
 Text Label 2150 5900 0    50   ~ 0
 ROW_0
 Text Label 4150 5300 2    50   ~ 0
-ENC_A
+ENC_B
 Text Label 8700 5750 0    50   ~ 0
 COL_0
 $Comp
@@ -1119,7 +1119,7 @@ Wire Wire Line
 Wire Wire Line
 	2150 5900 2550 5900
 Text Label 4150 5200 2    50   ~ 0
-ENC_B
+ENC_A
 Wire Wire Line
 	3750 5200 4150 5200
 NoConn ~ 3750 4800
